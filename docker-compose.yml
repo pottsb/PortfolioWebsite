@@ -1,0 +1,13 @@
+
+services:
+  mediamtx:
+    image: bluenviron/mediamtx:latest
+    container_name: mediamtx
+    restart: unless-stopped
+    ports:
+      - "8554:8554"        # RTSP
+      - "8000:8000"        # HLS / HTTP
+      - "8888:8888"        # WebRTC signaling
+      - "8889:8889/udp"    # WebRTC ICE/DTLS
+    volumes:
+      - ./mediamtx.yml:/mediamtx.yml:ro
