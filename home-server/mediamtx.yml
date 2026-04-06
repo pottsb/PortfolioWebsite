@@ -1,0 +1,12 @@
+logLevel: info
+
+paths:
+  camera1:
+    source: rtsps://192.168.10.2:7441/DP6Q7mGP8JtCK1QS
+    sourceFingerprint: "c9fb6a48f37e2e884b291f0520f1a033d4d5d01e79ee160835b09922b1a851f6"
+    rtspTransport: tcp
+
+  camera2:
+    source: rtsps://192.168.10.2:7441/c72eWdra6U65p6RK
+    sourceFingerprint: "c9fb6a48f37e2e884b291f0520f1a033d4d5d01e79ee160835b09922b1a851f6"
+    rtspTransport: tcp

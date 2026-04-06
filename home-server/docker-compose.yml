@@ -1,0 +1,22 @@
+services:
+  mediamtx:
+    image: bluenviron/mediamtx:latest
+    container_name: mediamtx
+    volumes:
+      - ./mediamtx.yml:/mediamtx.yml
+    ports:
+      - "8554:8554"        # RTSP
+    restart: unless-stopped
+
+  wireguard:
+    image: linuxserver/wireguard
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - TZ=Europe/London
+    volumes:
+      - ./wg0.conf:/config/wg0.conf
+    network_mode: host
+    restart: unless-stopped

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual HLS Player</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Centers horizontally */
+            align-items: center;     /* Centers vertically */
+            min-height: 100vh;
+            background-color: #1a1a1a;
+            font-family: sans-serif;
+        }
+
+        .player-container {
+            display: flex;
+            gap: 40px; /* The gap between the players */
+            padding: 20px;
+        }
+
+        video {
+            width: 480px;
+            background: #000;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="player-container">
+        <video id="video1" controls></video>
+        <video id="video2" controls></video>
+    </div>
+
+    <script>
+        // Replace these URLs with your actual .m3u8 links
+        const stream1 = 'http://127.0.0.1:8888/camera1/index.m3u8';
+        const stream2 = 'http://127.0.0.1:8888/camera2/index.m3u8';
+
+        function setupPlayer(videoID, url) {
+            const video = document.getElementById(videoID);
+            
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(url);
+                hls.attachMedia(video);
+            } 
+            // Fallback for Safari which supports HLS natively
+            else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = url;
+            }
+        }
+
+        setupPlayer('video1', stream1);
+        setupPlayer('video2', stream2);
+    </script>
+
+</body>
+</html>
