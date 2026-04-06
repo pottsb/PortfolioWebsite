@@ -1,0 +1,5 @@
+{$STREAM_DOMAIN} {
+    encode gzip zstd
+
+    reverse_proxy nginx:80
+}

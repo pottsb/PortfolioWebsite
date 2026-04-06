@@ -18,8 +18,8 @@ services:
     container_name: mediamtx-vps
     volumes:
       - ./mediamtx.yml:/mediamtx.yml
-    ports:
-      - "8888:8888"
+    expose:
+      - "8888"
     restart: unless-stopped
 
   api:
@@ -43,69 +43,29 @@ services:
       - NGINX_ENVSUBST_FILTER=^(STREAM_SECRET|STREAM_DOMAIN)$
     volumes:
       - ./nginx.conf:/etc/nginx/templates/nginx.conf.template:ro
-      - certbot-etc:/etc/letsencrypt:ro
-      - certbot-www:/var/www/certbot:ro
+    expose:
+      - "80"
+    depends_on:
+      - mediamtx-vps
+      - api
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2
+    container_name: caddy
+    env_file:
+      - .env
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
     ports:
       - "80:80"
       - "443:443"
     depends_on:
-      certbot-init:
-        condition: service_completed_successfully
-      - mediamtx-vps
-      - api
-    command: >-
-      /bin/sh -c '
-      test -f /etc/letsencrypt/live/nginx/fullchain.pem &&
-      test -f /etc/letsencrypt/live/nginx/privkey.pem &&
-      (while :; do sleep 6h; nginx -s reload; done) &
-      exec nginx -g "daemon off;"
-      '
-    restart: unless-stopped
-
-  certbot-init:
-    image: certbot/certbot:latest
-    container_name: certbot-init
-    env_file:
-      - .env
-    command: >-
-      /bin/sh -c '
-      test -n "$$LETSENCRYPT_EMAIL" &&
-      test -n "$$STREAM_DOMAIN
-      certbot certonly
-      --standalone
-      --preferred-challenges http
-      --non-interactive
-      --agree-tos
-      --email "$$LETSENCRYPT_EMAIL"
-      --cert-name nginx
-      --keep-until-expiring
-      -d "$$STREAM_DOMAIN
-      '
-    ports:
-      - "80:80"
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-www:/var/www/certbot
-    restart: "no"
-
-  certbot-renew:
-    image: certbot/certbot:latest
-    container_name: certbot-renew
-    command: >-
-      /bin/sh -c '
-      while :; do
-      certbot renew --webroot -w /var/www/certbot;
-      sleep 12h;
-      done
-      '
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-www:/var/www/certbot
-    depends_on:
-      certbot-init:
-        condition: service_completed_successfully
+      - nginx
     restart: unless-stopped
 
 volumes:
-  certbot-etc:
-  certbot-www:
+  caddy_data:
+  caddy_config:
