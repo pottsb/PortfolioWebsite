@@ -1,6 +1,8 @@
-
 networks:
   wgnet:
+    driver: bridge
+  # nginx, api, mediamtx must share a network for Docker DNS (service names).
+  app:
     driver: bridge
 
 services:
@@ -28,6 +30,7 @@ services:
     expose:
       - "8888"
     networks:
+      - app
       - wgnet
     restart: unless-stopped
 
@@ -38,6 +41,8 @@ services:
       - .env
     expose:
       - "8000"
+    networks:
+      - app
     restart: unless-stopped
 
   nginx:
@@ -54,6 +59,8 @@ services:
       - ./nginx.conf:/etc/nginx/templates/nginx.conf.template:ro
     expose:
       - "80"
+    networks:
+      - app
     depends_on:
       - mediamtx-vps
       - api
@@ -71,6 +78,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - app
     depends_on:
       - nginx
     restart: unless-stopped
