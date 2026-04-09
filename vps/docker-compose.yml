@@ -1,3 +1,8 @@
+
+networks:
+  wgnet:
+    driver: bridge
+
 services:
   wireguard:
     image: linuxserver/wireguard
@@ -8,9 +13,11 @@ services:
     environment:
       - TZ=Europe/London
     volumes:
-      - ./wireguard:/config
+      - ./wg0.conf:/config/wg_confs/wg0.conf
     ports:
       - "51820:51820/udp"
+    networks:
+      - wgnet
     restart: unless-stopped
 
   mediamtx-vps:
@@ -20,6 +27,8 @@ services:
       - ./mediamtx.yml:/mediamtx.yml
     expose:
       - "8888"
+    networks:
+      - wgnet
     restart: unless-stopped
 
   api:
