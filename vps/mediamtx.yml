@@ -5,13 +5,13 @@ hls: yes
 
 paths:
   camera1:
-    source: rtsp://10.0.0.2:8554/camera1 # rtsp://10.0.0.2:8554/camera1
+    source: rtsp://10.0.0.2:8554/camera1
     rtspTransport: tcp
-    #sourceOnDemand: yes
+    sourceOnDemand: yes
     maxReaders: 100
 
   camera2:
-    source: rtsp://10.0.0.2:8554/camera2  #rtsp://10.0.0.2:8554/camera2
+    source: rtsp://10.0.0.2:8554/camera2
     rtspTransport: tcp
-    #sourceOnDemand: yes
+    sourceOnDemand: yes
     maxReaders: 100
