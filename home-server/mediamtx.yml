@@ -1,5 +1,7 @@
 logLevel: info
 
+rtspAddress: 0.0.0.0:8554
+
 paths:
   camera1:
     source: rtsps://192.168.10.2:7441/DP6Q7mGP8JtCK1QS
