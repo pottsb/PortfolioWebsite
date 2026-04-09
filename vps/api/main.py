@@ -3,20 +3,11 @@ import hashlib
 import os
 import time
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
 SECRET = os.getenv("STREAM_SECRET")
 STREAM_DOMAIN = os.getenv("STREAM_DOMAIN")
-ALLOWED_ORIGIN = os.getenv("ALLOWED_ORIGIN")
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[ALLOWED_ORIGIN],
-    allow_methods=["GET"],
-    allow_headers=["*"],
-)
 
 @app.get("/get-stream")
 def get_stream():
