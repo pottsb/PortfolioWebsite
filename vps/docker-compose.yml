@@ -1,7 +1,5 @@
 networks:
-  wgnet:
-    driver: bridge
-  # nginx, api, mediamtx must share a network for Docker DNS (service names).
+  # nginx, api, wireguard (HLS) share this network for Docker DNS.
   app:
     driver: bridge
 
@@ -16,23 +14,23 @@ services:
       - TZ=Europe/London
     volumes:
       - ./wg0.conf:/config/wg_confs/wg0.conf
-    ports:
+    expose:
       - "51820:51820/udp"
+    expose:
+      - "8888"
     networks:
-      - wgnet
+      - app
     restart: unless-stopped
 
   mediamtx-vps:
     image: bluenviron/mediamtx:latest
     container_name: mediamtx-vps
+    network_mode: "service:wireguard"
     volumes:
       - ./mediamtx.yml:/mediamtx.yml
-    expose:
-      - "8888"
-    networks:
-      - app
-      - wgnet
     restart: unless-stopped
+    depends_on:
+      - wireguard
 
   api:
     build: ./api
@@ -62,6 +60,7 @@ services:
     networks:
       - app
     depends_on:
+      - wireguard
       - mediamtx-vps
       - api
     restart: unless-stopped

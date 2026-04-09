@@ -3,19 +3,6 @@ networks:
     driver: bridge
 
 services:
-  mediamtx:
-    image: bluenviron/mediamtx:latest
-    container_name: mediamtx
-    volumes:
-      - ./mediamtx.yml:/mediamtx.yml
-    ports:
-      - "8554:8554"        
-    networks:
-      - wgnet      # RTSP
-    restart: unless-stopped
-    depends_on:
-      - wireguard
-
   wireguard:
     image: linuxserver/wireguard
     container_name: wireguard
@@ -26,6 +13,18 @@ services:
       - TZ=Europe/London
     volumes:
       - ./wg0.conf:/config/wg_confs/wg0.conf
+    ports:
+      - "8554:8554"
     networks:
       - wgnet
     restart: unless-stopped
+
+  mediamtx:
+    image: bluenviron/mediamtx:latest
+    container_name: mediamtx
+    network_mode: "service:wireguard"
+    volumes:
+      - ./mediamtx.yml:/mediamtx.yml
+    restart: unless-stopped
+    depends_on:
+      - wireguard
