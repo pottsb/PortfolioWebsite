@@ -37,27 +37,67 @@
         <video id="video2" controls></video>
     </div>
 
-    <script>
-        // Replace these URLs with your actual .m3u8 links
-        const stream1 = 'http://127.0.0.1:8888/camera1/index.m3u8';
-        const stream2 = 'http://127.0.0.1:8888/camera2/index.m3u8';
-
+    <script> 
+        const hlsPlayers = {};
+    
+        async function fetchStreamUrls() {
+            try {
+                const response = await fetch("https://stream.bfrd.uk/api/get-stream", {
+                    method: "GET",
+                    headers: {
+                        "client-id": "mysecurityistopnotch"
+                    }
+                });
+    
+                if (!response.ok) {
+                    throw new Error("API request failed");
+                }
+    
+                const data = await response.json();
+    
+                console.log("Updated stream URLs", data);
+    
+                updatePlayer("video1", data.cam1);
+                updatePlayer("video2", data.cam2);
+    
+            } catch (err) {
+                console.error("Failed to fetch stream URLs:", err);
+            }
+        }
+    
         function setupPlayer(videoID, url) {
             const video = document.getElementById(videoID);
-            
+    
             if (Hls.isSupported()) {
                 const hls = new Hls();
                 hls.loadSource(url);
                 hls.attachMedia(video);
+                hlsPlayers[videoID] = hls;
             } 
-            // Fallback for Safari which supports HLS natively
             else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                 video.src = url;
             }
         }
-
-        setupPlayer('video1', stream1);
-        setupPlayer('video2', stream2);
+    
+        function updatePlayer(videoID, url) {
+            const video = document.getElementById(videoID);
+    
+            if (Hls.isSupported()) {
+    
+                if (hlsPlayers[videoID]) {
+                    hlsPlayers[videoID].loadSource(url);
+                    hlsPlayers[videoID].startLoad();
+                } else {
+                    setupPlayer(videoID, url);
+                }
+    
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = url;
+            }
+        }
+    
+        fetchStreamUrls();
+        setInterval(fetchStreamUrls, 240000);
     </script>
 
 </body>
