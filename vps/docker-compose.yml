@@ -33,7 +33,8 @@ services:
       - wireguard
 
   api:
-    build: ./api
+    image: pottsb/portfolio-stream-api:latest
+    pull_policy: always
     container_name: stream-api
     env_file:
       - .env
