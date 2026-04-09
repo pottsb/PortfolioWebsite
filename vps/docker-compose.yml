@@ -14,7 +14,7 @@ services:
       - TZ=Europe/London
     volumes:
       - ./wg0.conf:/config/wg_confs/wg0.conf
-    expose:
+    ports:
       - "51820:51820/udp"
     expose:
       - "8888"
