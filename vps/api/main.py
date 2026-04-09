@@ -20,7 +20,7 @@ app.add_middleware(
 
 @app.get("/get-stream")
 def get_stream():
-    expires = int(time.time()) + 60
+    expires = int(time.time()) + 300
     token_string = f"{SECRET}{expires}"
     digest = hashlib.md5(token_string.encode()).digest()
     # nginx secure_link expects base64url (no padding), not hex — see ngx_http_secure_link_module
