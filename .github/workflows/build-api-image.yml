@@ -1,4 +1,4 @@
-name: Build and Push API Image
+name: Build and Push VPS stream images
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "vps/api/**"
+      - "vps/thumbgen/**"
       - ".github/workflows/build-api-image.yml"
   workflow_dispatch:
 
@@ -29,8 +30,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Extract Docker metadata
-        id: meta
+      - name: Extract Docker metadata (API)
+        id: meta_api
         uses: docker/metadata-action@v5
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-stream-api
@@ -44,5 +45,23 @@ jobs:
           context: ./vps/api
           file: ./vps/api/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta_api.outputs.tags }}
+          labels: ${{ steps.meta_api.outputs.labels }}
+
+      - name: Extract Docker metadata (thumbgen)
+        id: meta_thumbgen
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-stream-thumbgen
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=short
+
+      - name: Build and push thumbgen image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./vps/thumbgen
+          file: ./vps/thumbgen/Dockerfile
+          push: true
+          tags: ${{ steps.meta_thumbgen.outputs.tags }}
+          labels: ${{ steps.meta_thumbgen.outputs.labels }}
