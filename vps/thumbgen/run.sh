@@ -4,7 +4,7 @@
 set -eu
 
 INTERVAL="${THUMB_INTERVAL_SEC:-300}"
-HLS_BASE="${HLS_BASE:-http://wireguard:8888/hls}"
+HLS_BASE="${HLS_BASE:-http://wireguard:8888}"
 OUT_DIR="${THUMB_OUT_DIR:-/thumbs}"
 
 mkdir -p "$OUT_DIR"
