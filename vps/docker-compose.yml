@@ -44,6 +44,19 @@ services:
       - app
     restart: unless-stopped
 
+  thumbgen:
+    image: pottsb/portfolio-stream-thumbgen:latest
+    pull_policy: always
+    container_name: thumbgen
+    networks:
+      - app
+    volumes:
+      - thumbs_data:/thumbs
+    depends_on:
+      - wireguard
+      - mediamtx-vps
+    restart: unless-stopped
+
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -56,6 +69,7 @@ services:
       - NGINX_ENVSUBST_FILTER=^(STREAM_SECRET|STREAM_DOMAIN|API_AUTH_HEADER_SECRET)$
     volumes:
       - ./nginx.conf:/etc/nginx/templates/nginx.conf.template:ro
+      - thumbs_data:/thumbs:ro
     expose:
       - "80"
     networks:
@@ -64,6 +78,7 @@ services:
       - wireguard
       - mediamtx-vps
       - api
+      - thumbgen
     restart: unless-stopped
 
   caddy:
@@ -87,3 +102,4 @@ services:
 volumes:
   caddy_data:
   caddy_config:
+  thumbs_data:
