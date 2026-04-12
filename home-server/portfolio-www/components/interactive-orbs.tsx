@@ -47,7 +47,6 @@ export function InteractiveOrbs() {
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current.x = e.clientX
       mouseRef.current.y = e.clientY
-
     }
 
     const handleTouchMove = (e: TouchEvent) => {
