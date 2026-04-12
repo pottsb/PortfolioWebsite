@@ -5,6 +5,7 @@ import Hls from 'hls.js'
 import { Eye, Loader2, Server, Wifi, WifiOff } from 'lucide-react'
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Button } from '@/components/ui/button'
 
 interface StreamCamUrls {
   cam1: string
@@ -224,28 +225,20 @@ export function ServerStreams() {
         {/* View toggle */}
         {streamUrls && (
           <div className="absolute right-4 top-4 flex gap-2">
-            <button
+            <Button
               type="button"
+              variant={activeView === 'front' ? 'streamActive' : 'streamInactive'}
               onClick={() => setActiveView('front')}
-              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
-                activeView === 'front'
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-secondary/80 text-secondary-foreground hover:bg-secondary'
-              }`}
             >
               Front
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant={activeView === 'back' ? 'streamActive' : 'streamInactive'}
               onClick={() => setActiveView('back')}
-              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
-                activeView === 'back'
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-secondary/80 text-secondary-foreground hover:bg-secondary'
-              }`}
             >
               Back
-            </button>
+            </Button>
           </div>
         )}
       </div>

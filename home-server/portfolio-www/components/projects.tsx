@@ -102,7 +102,7 @@ export function Projects() {
                   </Button>
                 )}
                 {project.live && (
-                  <Button size="sm" asChild className="flex-1">
+                  <Button variant="primary" size="sm" asChild className="flex-1">
                     <a href={project.live}>
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Live Demo

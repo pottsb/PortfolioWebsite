@@ -2,6 +2,7 @@
 
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { Button } from '@/components/ui/button'
 import { ThemeToggle } from './theme-toggle'
 
 const navLinks = [
@@ -53,13 +54,13 @@ export function Navigation() {
           {/* Mobile menu button */}
           <div className="flex items-center gap-4 md:hidden">
             <ThemeToggle />
-            <button
+            <Button
               type="button"
+              variant="navIcon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-foreground"
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+            </Button>
           </div>
         </div>
 

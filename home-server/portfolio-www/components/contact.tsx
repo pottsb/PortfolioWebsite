@@ -2,6 +2,8 @@
 
 import { Github, Linkedin, Mail } from 'lucide-react'
 
+import { Button } from '@/components/ui/button'
+
 const socialLinks = [
   {
     name: 'GitHub',
@@ -33,16 +35,12 @@ export function Contact() {
         {/* Social Links */}
         <div className="flex flex-wrap gap-4">
           {socialLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors"
-            >
-              <link.icon className="h-4 w-4" />
-              <span className="text-sm font-medium">{link.name}</span>
-            </a>
+            <Button key={link.name} variant="social" asChild>
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
+                <link.icon className="h-4 w-4" />
+                <span className="text-sm font-medium">{link.name}</span>
+              </a>
+            </Button>
           ))}
         </div>
       </div>

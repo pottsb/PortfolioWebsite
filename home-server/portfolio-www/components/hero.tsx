@@ -2,6 +2,8 @@
 
 import { ArrowDown, Code2, Mail, Server } from 'lucide-react'
 
+import { Button } from '@/components/ui/button'
+
 export function Hero() {
   return (
     <section className="min-h-[90vh] flex flex-col justify-center relative">
@@ -33,19 +35,15 @@ export function Hero() {
 
         {/* CTA Links */}
         <div className="flex flex-wrap gap-4 opacity-0 animate-fade-in-up animation-delay-400">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
-          >
-            <Mail className="h-4 w-4" />
-            Get in touch
-          </a>
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-secondary border border-border text-secondary-foreground text-sm font-medium rounded-lg hover:bg-accent transition-colors dark:hover:text-black"
-          >
-            View projects
-          </a>
+          <Button variant="heroPrimary" asChild>
+            <a href="#contact">
+              <Mail className="h-4 w-4" />
+              Get in touch
+            </a>
+          </Button>
+          <Button variant="heroSecondary" asChild>
+            <a href="#projects">View projects</a>
+          </Button>
         </div>
       </div>
 
