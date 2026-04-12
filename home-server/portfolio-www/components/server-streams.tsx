@@ -174,7 +174,7 @@ export function ServerStreams() {
   const showOfflineBadge = !urlsLoading && streamUrls == null
 
   return (
-    <div className="relative">
+    <div className="relative overflow-x-clip">
       <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
         <span
           className="flex items-center gap-2 rounded-full border border-border bg-card/90 px-3 py-1.5 backdrop-blur-sm"

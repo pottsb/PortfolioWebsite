@@ -122,12 +122,13 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-clip;
   }
 }
 
-/* Smooth theme transition */
+/* Smooth theme transition; clip horizontal ink overflow (glows, shadows, transforms) */
 html {
+  overflow-x: clip;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
