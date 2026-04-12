@@ -43,7 +43,7 @@ export function Hero() {
           </a>
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-secondary border border-border text-secondary-foreground text-sm font-medium rounded-lg hover:bg-accent transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-secondary border border-border text-secondary-foreground text-sm font-medium rounded-lg hover:bg-accent transition-colors dark:hover:text-black"
           >
             View projects
           </a>
