@@ -21,3 +21,16 @@ def get_stream():
         "cam1": f"https://{STREAM_DOMAIN}/hls/camera1/index.m3u8?token={token}&expires={expires}",
         "cam2": f"https://{STREAM_DOMAIN}/hls/camera2/index.m3u8?token={token}&expires={expires}",
     }
+
+@app.get("/get-thumb")
+def get_thumb():
+    expires = int(time.time()) + 300
+    token_string = f"{SECRET}{expires}"
+    digest = hashlib.md5(token_string.encode()).digest()
+    # nginx secure_link expects base64url (no padding), not hex — see ngx_http_secure_link_module
+    token = base64.urlsafe_b64encode(digest).decode("ascii").rstrip("=")
+
+    return {
+        "cam1": f"https://{STREAM_DOMAIN}/thumbs/camera1.jpg?token={token}&expires={expires}",
+        "cam2": f"https://{STREAM_DOMAIN}/thumbs/camera2.jpg?token={token}&expires={expires}",
+    }
