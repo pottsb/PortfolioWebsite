@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - "vps/api/**"
-      - "vps/thumbgen/**"
+      - "vps/cctv-relay/api/**"
+      - "vps/cctv-relay/thumbgen/**"
       - ".github/workflows/build-api-image.yml"
   workflow_dispatch:
 
@@ -42,8 +42,8 @@ jobs:
       - name: Build and push API image
         uses: docker/build-push-action@v6
         with:
-          context: ./vps/api
-          file: ./vps/api/Dockerfile
+          context: ./vps/cctv-relay/api
+          file: ./vps/cctv-relay/api/Dockerfile
           push: true
           tags: ${{ steps.meta_api.outputs.tags }}
           labels: ${{ steps.meta_api.outputs.labels }}
@@ -60,8 +60,8 @@ jobs:
       - name: Build and push thumbgen image
         uses: docker/build-push-action@v6
         with:
-          context: ./vps/thumbgen
-          file: ./vps/thumbgen/Dockerfile
+          context: ./vps//cctv-relaythumbgen
+          file: ./vps/cctv-relay/thumbgen/Dockerfile
           push: true
           tags: ${{ steps.meta_thumbgen.outputs.tags }}
           labels: ${{ steps.meta_thumbgen.outputs.labels }}
