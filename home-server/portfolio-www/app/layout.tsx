@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Peter Bedford| Software Developer & System Administrator',
   description:
-    'Software developer and system administrator portfolio showcasing projects and self-hosted infrastructure.',
+    'Software developer, system administrator, and self-hosting enthusiast. Building robust applications and maintaining the infrastructure that powers them. From code to server rack, I enjoy every layer of the stack.',
 }
 
 export const viewport: Viewport = {
