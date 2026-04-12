@@ -33,7 +33,6 @@ export function ServerStreams() {
   const [streamUrls, setStreamUrls] = useState<StreamUrls | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [activeView, setActiveView] = useState<'front' | 'back'>('front')
-  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
     fetchStreamUrls().then((data) => {
@@ -65,11 +64,7 @@ export function ServerStreams() {
       </div>
 
       {/* Main container with ambient glow */}
-      <div
-        className="relative rounded-2xl overflow-hidden animate-ambient-glow"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+      <div className="relative rounded-2xl overflow-hidden animate-ambient-glow group">
         {/* Stream view */}
         <div className="relative aspect-video bg-secondary/50 rounded-2xl overflow-hidden border border-border">
           {isLoading ? (
@@ -81,6 +76,8 @@ export function ServerStreams() {
             </div>
           ) : streamUrls ? (
             <>
+              {/* Live MJPEG streams: native img is required; next/image is not suitable here. */}
+              {/* biome-ignore lint/performance/noImgElement: MJPEG camera stream */}
               <img
                 src={activeView === 'front' ? streamUrls.cam1 : streamUrls.cam2}
                 alt={`Server rack ${activeView} view`}
@@ -91,9 +88,7 @@ export function ServerStreams() {
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
 
               {/* Info overlay */}
-              <div
-                className={`absolute bottom-0 left-0 right-0 p-4 transition-all duration-300 ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-70'}`}
-              >
+              <div className="absolute bottom-0 left-0 right-0 p-4 transition-all duration-300 translate-y-2 opacity-70 group-hover:translate-y-0 group-hover:opacity-100">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Eye className="h-4 w-4 text-primary" />
@@ -122,6 +117,7 @@ export function ServerStreams() {
         {streamUrls && (
           <div className="absolute top-4 right-4 flex gap-2">
             <button
+              type="button"
               onClick={() => setActiveView('front')}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
                 activeView === 'front'
@@ -132,6 +128,7 @@ export function ServerStreams() {
               Front
             </button>
             <button
+              type="button"
               onClick={() => setActiveView('back')}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
                 activeView === 'back'
