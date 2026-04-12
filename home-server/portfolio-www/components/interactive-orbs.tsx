@@ -18,7 +18,6 @@ export function InteractiveOrbs() {
   const containerRef = useRef<HTMLDivElement>(null)
   const orbsRef = useRef<Orb[]>([])
   const mouseRef = useRef({ x: 0, y: 0, isDown: false })
-  const draggedOrbRef = useRef<number | null>(null)
   const animationRef = useRef<ReturnType<typeof requestAnimationFrame> | undefined>(undefined)
   const [, forceUpdate] = useState(0)
 
@@ -49,31 +48,12 @@ export function InteractiveOrbs() {
       mouseRef.current.x = e.clientX
       mouseRef.current.y = e.clientY
 
-      if (draggedOrbRef.current !== null) {
-        const orb = orbsRef.current[draggedOrbRef.current]
-        if (orb) {
-          orb.x = e.clientX
-          orb.y = e.clientY
-          orb.vx = 0
-          orb.vy = 0
-        }
-      }
     }
 
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         mouseRef.current.x = e.touches[0].clientX
         mouseRef.current.y = e.touches[0].clientY
-
-        if (draggedOrbRef.current !== null) {
-          const orb = orbsRef.current[draggedOrbRef.current]
-          if (orb) {
-            orb.x = e.touches[0].clientX
-            orb.y = e.touches[0].clientY
-            orb.vx = 0
-            orb.vy = 0
-          }
-        }
       }
     }
 
