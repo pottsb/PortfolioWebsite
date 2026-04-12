@@ -12,6 +12,8 @@ interface StreamCamUrls {
   cam2: string
 }
 
+const STREAM_URL_REFETCH_MS = 250_000
+
 /** cam1 = rear rack, cam2 = front rack */
 function urlForView(view: 'front' | 'back', urls: StreamCamUrls): string {
   return view === 'front' ? urls.cam2 : urls.cam1
@@ -119,11 +121,30 @@ export function ServerStreams() {
   const [streamFramesVisible, setStreamFramesVisible] = useState(false)
 
   useEffect(() => {
-    void fetchStreamCamUrls('/api/stream-thumbnails').then(setThumbUrls)
+    let cancelled = false
+
+    void fetchStreamCamUrls('/api/stream-thumbnails').then((urls) => {
+      if (!cancelled) setThumbUrls(urls)
+    })
     void fetchStreamCamUrls('/api/stream-urls').then((streams) => {
+      if (cancelled) return
       setStreamUrls(streams)
       setUrlsLoading(false)
     })
+
+    const intervalId = window.setInterval(() => {
+      void fetchStreamCamUrls('/api/stream-thumbnails').then((urls) => {
+        if (!cancelled && urls != null) setThumbUrls(urls)
+      })
+      void fetchStreamCamUrls('/api/stream-urls').then((streams) => {
+        if (!cancelled && streams != null) setStreamUrls(streams)
+      })
+    }, STREAM_URL_REFETCH_MS)
+
+    return () => {
+      cancelled = true
+      window.clearInterval(intervalId)
+    }
   }, [])
 
   const streamSrc = streamUrls != null ? urlForView(activeView, streamUrls) : null
