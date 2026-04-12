@@ -1,4 +1,3 @@
 vps/api/__pycache__/
 .env
-vps/wg0.conf
-home-server/wg0.conf
+wg0.conf
