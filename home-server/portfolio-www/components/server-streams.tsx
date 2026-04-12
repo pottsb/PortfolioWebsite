@@ -204,7 +204,9 @@ export function ServerStreams() {
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Wifi className="h-3.5 w-3.5 text-primary" />
-                    <span className="font-mono text-xs text-muted-foreground">VPS Stream Relay</span>
+                    <span className="font-mono text-xs text-muted-foreground">
+                      VPS Stream Relay
+                    </span>
                   </div>
                 </div>
               </div>
