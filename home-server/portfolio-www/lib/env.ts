@@ -2,17 +2,28 @@ import { z } from "zod";
 
 const serverEnvSchema = z
   .object({
-    STREAM_DOMAIN: z.string().trim().min(1, "STREAM_DOMAIN is required").url(),
-    STREAM_BFRD_CLIENT_ID: z.string().trim().min(1, "STREAM_BFRD_CLIENT_ID is required"),
-    LINK_EXPIRARY: z.number().int().positive().optional(),
+    STREAM_DOMAIN: z
+      .string()
+      .trim()
+      .min(1, "STREAM_DOMAIN is required")
+      .url("STREAM_DOMAIN must be a valid URL"),
+    STREAM_BFRD_CLIENT_ID: z
+      .string()
+      .trim()
+      .min(1, "STREAM_BFRD_CLIENT_ID is required"),
+    LINK_EXPIRARY: z.preprocess(
+      (v) => {
+        if (v === undefined || v === null) return undefined;
+        if (typeof v === "string" && v.trim() === "") return undefined;
+        return v;
+      },
+      z.coerce.number().int().positive().optional(),
+    ),
   })
   .transform((o) => ({
     STREAM_DOMAIN: o.STREAM_DOMAIN,
     STREAM_BFRD_CLIENT_ID: o.STREAM_BFRD_CLIENT_ID,
-    linkExpirySeconds:
-      o.LINK_EXPIRARY === undefined || o.LINK_EXPIRARY === 0
-        ? 300
-        : o.LINK_EXPIRARY,
+    linkExpirySeconds: o.LINK_EXPIRARY ?? 300,
   }));
 
 export type Env = z.infer<typeof serverEnvSchema>;
