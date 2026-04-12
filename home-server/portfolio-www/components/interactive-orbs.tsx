@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { type CSSProperties, useEffect, useRef, useState } from 'react'
 
 interface Orb {
   id: number
@@ -146,28 +146,24 @@ export function InteractiveOrbs() {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 pointer-events-auto z-0 overflow-hidden"
+      className="interactive-orbs fixed inset-0 pointer-events-auto z-0 overflow-hidden"
       style={{ touchAction: 'none' }}
     >
       {orbsRef.current.map((orb) => (
         <div
           key={orb.id}
-          className="absolute rounded-full transition-transform duration-75"
-          style={{
-            left: orb.x - orb.size / 2,
-            top: orb.y - orb.size / 2,
-            width: orb.size,
-            height: orb.size,
-            background: `radial-gradient(circle at 30% 30%, 
-              oklch(0.8 0.12 ${orb.hue} / 0.15), 
-              oklch(0.6 0.15 ${orb.hue} / 0.08) 50%, 
-              oklch(0.5 0.1 ${orb.hue} / 0.02) 100%)`,
-            boxShadow: `0 0 30px 5px oklch(0.75 0.16 ${orb.hue} / 0.15), inset 0 0 15px oklch(0.8 0.12 ${orb.hue} / 0.1)`,
-            backdropFilter: 'blur(2px)',
-          }}
+          className="interactive-orb-sphere absolute rounded-full transition-transform duration-75"
+          style={
+            {
+              '--orb-hue': orb.hue,
+              left: orb.x - orb.size / 2,
+              top: orb.y - orb.size / 2,
+              width: orb.size,
+              height: orb.size,
+            } as CSSProperties
+          }
         />
       ))}
-
     </div>
   )
 }
