@@ -5,12 +5,15 @@ import Hls from 'hls.js'
 import { Eye, Loader2, Server, Wifi, WifiOff } from 'lucide-react'
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 
-interface StreamCamUrls {
-  cam1: string
-  cam2: string
-}
+const streamCamUrlsSchema = z.object({
+  cam1: z.string().url(),
+  cam2: z.string().url(),
+})
+
+type StreamCamUrls = z.infer<typeof streamCamUrlsSchema>
 
 const STREAM_URL_REFETCH_MS = 250_000
 
@@ -27,7 +30,13 @@ async function fetchStreamCamUrls(path: string): Promise<StreamCamUrls | null> {
       throw new Error('API request failed')
     }
 
-    return (await response.json()) as StreamCamUrls
+    const raw: unknown = await response.json()
+    const parsed = streamCamUrlsSchema.safeParse(raw)
+    if (!parsed.success) {
+      console.error(`Invalid stream API response from ${path}:`, parsed.error.flatten())
+      return null
+    }
+    return parsed.data
   } catch (err) {
     console.error(`Failed to fetch ${path}:`, err)
     return null
