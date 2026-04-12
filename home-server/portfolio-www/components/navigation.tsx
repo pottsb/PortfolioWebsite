@@ -54,6 +54,7 @@ export function Navigation() {
           <div className="flex items-center gap-4 md:hidden">
             <ThemeToggle />
             <button
+              type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-foreground"
             >
