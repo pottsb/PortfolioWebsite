@@ -2,17 +2,17 @@ import { z } from "zod";
 
 const serverEnvSchema = z
   .object({
-    STREAM_DOMAIN: z.string().url(),
-    STREAM_BFRD_CLIENT_ID: z.string().min(1),
-    LINK_EXPIRARY: z.string().optional(),
+    STREAM_DOMAIN: z.string().trim().min(1, "STREAM_DOMAIN is required").url(),
+    STREAM_BFRD_CLIENT_ID: z.string().trim().min(1, "STREAM_BFRD_CLIENT_ID is required"),
+    LINK_EXPIRARY: z.number().int().positive().optional(),
   })
   .transform((o) => ({
     STREAM_DOMAIN: o.STREAM_DOMAIN,
     STREAM_BFRD_CLIENT_ID: o.STREAM_BFRD_CLIENT_ID,
     linkExpirySeconds:
-      o.LINK_EXPIRARY === undefined || o.LINK_EXPIRARY === ""
+      o.LINK_EXPIRARY === undefined || o.LINK_EXPIRARY === 0
         ? 300
-        : z.coerce.number().int().positive().parse(o.LINK_EXPIRARY),
+        : o.LINK_EXPIRARY,
   }));
 
 export type Env = z.infer<typeof serverEnvSchema>;
