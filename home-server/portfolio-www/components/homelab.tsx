@@ -46,10 +46,6 @@ export function Homelab() {
   return (
     <section id="homelab" className="py-24">
       <div className="mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full border border-primary/20 text-primary text-sm font-medium mb-4">
-          <Server className="h-4 w-4" />
-          Self-Hosted Infrastructure
-        </div>
         <h2 className="text-3xl font-bold text-foreground mb-4">The Homelab</h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed">
           My passion project and learning playground. A full server rack running enterprise-grade

@@ -14,11 +14,6 @@ const socialLinks = [
     icon: Linkedin,
   },
   {
-    name: 'Twitter',
-    href: 'https://twitter.com',
-    icon: Twitter,
-  },
-  {
     name: 'Email',
     href: 'mailto:hello@example.com',
     icon: Mail,

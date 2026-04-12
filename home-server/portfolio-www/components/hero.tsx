@@ -10,14 +10,6 @@ export function Hero() {
       <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
 
       <div className="relative z-10">
-        {/* Available for opportunities pill with glow */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm text-primary opacity-0 animate-fade-in-up shadow-[0_0_15px_rgba(var(--primary),0.3)]">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
-          </span>
-          Available for opportunities
-        </div>
 
         {/* Large name */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up animation-delay-100">
