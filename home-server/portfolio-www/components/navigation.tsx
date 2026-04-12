@@ -32,9 +32,9 @@ export function Navigation() {
       <nav className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="font-mono text-lg font-semibold text-foreground">
+          <span className="font-mono text-lg font-semibold text-foreground">
             <span className="text-primary">~/</span>portfolio
-          </a>
+          </span>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
