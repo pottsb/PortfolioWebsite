@@ -10,7 +10,6 @@ export function Hero() {
       <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
 
       <div className="relative z-10">
-
         {/* Large name */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up animation-delay-100">
           <span className="text-balance text-foreground">Hi, I&apos;m </span>
