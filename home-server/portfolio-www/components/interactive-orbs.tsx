@@ -19,7 +19,7 @@ export function InteractiveOrbs() {
   const orbsRef = useRef<Orb[]>([])
   const mouseRef = useRef({ x: 0, y: 0, isDown: false })
   const draggedOrbRef = useRef<number | null>(null)
-  const animationRef = useRef<number>()
+  const animationRef = useRef<ReturnType<typeof requestAnimationFrame> | undefined>(undefined)
   const [, forceUpdate] = useState(0)
 
   useEffect(() => {
