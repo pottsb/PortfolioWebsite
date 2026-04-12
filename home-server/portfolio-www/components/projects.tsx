@@ -1,39 +1,43 @@
-"use client"
+'use client'
 
-import { ExternalLink, Github } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { ExternalLink, Github } from 'lucide-react'
+import Image from 'next/image'
+import { Button } from '@/components/ui/button'
 
 const projects = [
   {
-    title: "Project Alpha",
-    description: "A full-stack web application built with Next.js and PostgreSQL. Features real-time updates and user authentication.",
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind"],
-    image: "/projects/project-alpha.jpg",
-    github: "#",
-    live: "#",
+    title: 'Project Alpha',
+    description:
+      'A full-stack web application built with Next.js and PostgreSQL. Features real-time updates and user authentication.',
+    tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind'],
+    image: '/projects/project-alpha.jpg',
+    github: '#',
+    live: '#',
   },
   {
-    title: "Infrastructure Monitor",
-    description: "Custom monitoring dashboard for homelab infrastructure. Tracks server health, network status, and resource usage.",
-    tags: ["Python", "Grafana", "Prometheus", "Docker"],
-    image: "/projects/infra-monitor.jpg",
-    github: "#",
-    live: "#",
+    title: 'Infrastructure Monitor',
+    description:
+      'Custom monitoring dashboard for homelab infrastructure. Tracks server health, network status, and resource usage.',
+    tags: ['Python', 'Grafana', 'Prometheus', 'Docker'],
+    image: '/projects/infra-monitor.jpg',
+    github: '#',
+    live: '#',
   },
   {
-    title: "API Gateway",
-    description: "Self-hosted API gateway with rate limiting, authentication, and request logging for microservices architecture.",
-    tags: ["Go", "Redis", "Docker", "Nginx"],
-    image: "/projects/api-gateway.jpg",
-    github: "#",
+    title: 'API Gateway',
+    description:
+      'Self-hosted API gateway with rate limiting, authentication, and request logging for microservices architecture.',
+    tags: ['Go', 'Redis', 'Docker', 'Nginx'],
+    image: '/projects/api-gateway.jpg',
+    github: '#',
   },
   {
-    title: "Automation Scripts",
-    description: "Collection of automation scripts for server provisioning, backup management, and system maintenance.",
-    tags: ["Bash", "Ansible", "Python", "Cron"],
-    image: "/projects/automation.jpg",
-    github: "#",
+    title: 'Automation Scripts',
+    description:
+      'Collection of automation scripts for server provisioning, backup management, and system maintenance.',
+    tags: ['Bash', 'Ansible', 'Python', 'Cron'],
+    image: '/projects/automation.jpg',
+    github: '#',
   },
 ]
 
@@ -43,7 +47,8 @@ export function Projects() {
       <div className="mb-12">
         <h2 className="text-3xl font-bold text-foreground mb-4">Projects</h2>
         <p className="text-muted-foreground max-w-2xl">
-          A selection of projects I&apos;ve worked on, from web applications to infrastructure tooling.
+          A selection of projects I&apos;ve worked on, from web applications to infrastructure
+          tooling.
         </p>
       </div>
 

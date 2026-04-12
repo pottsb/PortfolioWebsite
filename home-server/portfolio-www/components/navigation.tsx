@@ -1,14 +1,14 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from "react"
-import { ThemeToggle } from "./theme-toggle"
-import { Menu, X } from "lucide-react"
+import { Menu, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { ThemeToggle } from './theme-toggle'
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#homelab", label: "Homelab" },
-  { href: "#contact", label: "Contact" },
+  { href: '#about', label: 'About' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#homelab', label: 'Homelab' },
+  { href: '#contact', label: 'Contact' },
 ]
 
 export function Navigation() {
@@ -19,16 +19,14 @@ export function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
+        isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 py-4">

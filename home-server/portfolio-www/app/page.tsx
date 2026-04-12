@@ -1,11 +1,11 @@
-import { Navigation } from "@/components/navigation"
-import { Hero } from "@/components/hero"
-import { About } from "@/components/about"
-import { Projects } from "@/components/projects"
-import { Homelab } from "@/components/homelab"
-import { Contact } from "@/components/contact"
-import { Footer } from "@/components/footer"
-import { InteractiveOrbs } from "@/components/interactive-orbs"
+import { About } from '@/components/about'
+import { Contact } from '@/components/contact'
+import { Footer } from '@/components/footer'
+import { Hero } from '@/components/hero'
+import { Homelab } from '@/components/homelab'
+import { InteractiveOrbs } from '@/components/interactive-orbs'
+import { Navigation } from '@/components/navigation'
+import { Projects } from '@/components/projects'
 
 export default function Home() {
   return (

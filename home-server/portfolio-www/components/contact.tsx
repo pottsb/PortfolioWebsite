@@ -1,26 +1,26 @@
-"use client"
+'use client'
 
-import { Mail, Github, Linkedin, Twitter } from "lucide-react"
+import { Github, Linkedin, Mail, Twitter } from 'lucide-react'
 
 const socialLinks = [
   {
-    name: "GitHub",
-    href: "https://github.com",
+    name: 'GitHub',
+    href: 'https://github.com',
     icon: Github,
   },
   {
-    name: "LinkedIn",
-    href: "https://linkedin.com",
+    name: 'LinkedIn',
+    href: 'https://linkedin.com',
     icon: Linkedin,
   },
   {
-    name: "Twitter",
-    href: "https://twitter.com",
+    name: 'Twitter',
+    href: 'https://twitter.com',
     icon: Twitter,
   },
   {
-    name: "Email",
-    href: "mailto:hello@example.com",
+    name: 'Email',
+    href: 'mailto:hello@example.com',
     icon: Mail,
   },
 ]
@@ -31,8 +31,8 @@ export function Contact() {
       <div className="max-w-xl">
         <h2 className="text-3xl font-bold text-foreground mb-4">Get in Touch</h2>
         <p className="text-muted-foreground mb-8 leading-relaxed">
-          Have a project in mind or just want to chat about tech? 
-          I&apos;m always happy to connect and discuss ideas.
+          Have a project in mind or just want to chat about tech? I&apos;m always happy to connect
+          and discuss ideas.
         </p>
 
         {/* Social Links */}

@@ -1,7 +1,7 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react"
-import { Server, Wifi, WifiOff, Eye } from "lucide-react"
+import { Eye, Server, Wifi, WifiOff } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 interface StreamUrls {
   cam1: string
@@ -10,21 +10,21 @@ interface StreamUrls {
 
 async function fetchStreamUrls(): Promise<StreamUrls | null> {
   try {
-    const response = await fetch("https://stream.bfrd.uk/api/get-stream", {
-      method: "GET",
+    const response = await fetch('https://stream.bfrd.uk/api/get-stream', {
+      method: 'GET',
       headers: {
-        "client-id": "mysecurityistopnotch"
-      }
+        'client-id': 'mysecurityistopnotch',
+      },
     })
 
     if (!response.ok) {
-      throw new Error("API request failed")
+      throw new Error('API request failed')
     }
 
     const data = await response.json()
     return data
   } catch (err) {
-    console.error("Failed to fetch stream URLs:", err)
+    console.error('Failed to fetch stream URLs:', err)
     return null
   }
 }
@@ -32,7 +32,7 @@ async function fetchStreamUrls(): Promise<StreamUrls | null> {
 export function ServerStreams() {
   const [streamUrls, setStreamUrls] = useState<StreamUrls | null>(null)
   const [isLoading, setIsLoading] = useState(true)
-  const [activeView, setActiveView] = useState<"front" | "back">("front")
+  const [activeView, setActiveView] = useState<'front' | 'back'>('front')
   const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export function ServerStreams() {
       </div>
 
       {/* Main container with ambient glow */}
-      <div 
+      <div
         className="relative rounded-2xl overflow-hidden animate-ambient-glow"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -82,21 +82,23 @@ export function ServerStreams() {
           ) : streamUrls ? (
             <>
               <img
-                src={activeView === "front" ? streamUrls.cam1 : streamUrls.cam2}
+                src={activeView === 'front' ? streamUrls.cam1 : streamUrls.cam2}
                 alt={`Server rack ${activeView} view`}
                 className="w-full h-full object-cover transition-all duration-500"
               />
-              
+
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-              
+
               {/* Info overlay */}
-              <div className={`absolute bottom-0 left-0 right-0 p-4 transition-all duration-300 ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-70'}`}>
+              <div
+                className={`absolute bottom-0 left-0 right-0 p-4 transition-all duration-300 ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-70'}`}
+              >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Eye className="h-4 w-4 text-primary" />
                     <span className="text-sm font-medium text-foreground">
-                      {activeView === "front" ? "Front Panel" : "Rear Connections"}
+                      {activeView === 'front' ? 'Front Panel' : 'Rear Connections'}
                     </span>
                   </div>
                   <div className="flex items-center gap-1.5">
@@ -120,21 +122,21 @@ export function ServerStreams() {
         {streamUrls && (
           <div className="absolute top-4 right-4 flex gap-2">
             <button
-              onClick={() => setActiveView("front")}
+              onClick={() => setActiveView('front')}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
-                activeView === "front"
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/80 text-secondary-foreground hover:bg-secondary"
+                activeView === 'front'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-secondary/80 text-secondary-foreground hover:bg-secondary'
               }`}
             >
               Front
             </button>
             <button
-              onClick={() => setActiveView("back")}
+              onClick={() => setActiveView('back')}
               className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
-                activeView === "back"
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/80 text-secondary-foreground hover:bg-secondary"
+                activeView === 'back'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-secondary/80 text-secondary-foreground hover:bg-secondary'
               }`}
             >
               Back
@@ -147,9 +149,7 @@ export function ServerStreams() {
       <div className="mt-4 flex justify-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
           <Server className="h-4 w-4 text-primary" />
-          <span className="text-sm text-foreground">
-            This website is hosted on this server
-          </span>
+          <span className="text-sm text-foreground">This website is hosted on this server</span>
           <span className="flex h-2 w-2">
             <span className="animate-pulse-glow relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
           </span>

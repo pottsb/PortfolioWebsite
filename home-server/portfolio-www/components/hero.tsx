@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { Code2, Server, Mail, ArrowDown } from "lucide-react"
+import { ArrowDown, Code2, Mail, Server } from 'lucide-react'
 
 export function Hero() {
   return (
@@ -36,7 +36,8 @@ export function Hero() {
 
         {/* Description */}
         <p className="text-lg text-muted-foreground max-w-2xl text-balance leading-relaxed mb-8 opacity-0 animate-fade-in-up animation-delay-300">
-          I build robust applications and maintain the infrastructure that powers them. From code to server rack, I enjoy every layer of the stack.
+          I build robust applications and maintain the infrastructure that powers them. From code to
+          server rack, I enjoy every layer of the stack.
         </p>
 
         {/* CTA Links */}
@@ -59,7 +60,10 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in-up animation-delay-600">
-        <a href="#about" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+        <a
+          href="#about"
+          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+        >
           <span className="text-xs">Scroll</span>
           <ArrowDown className="h-4 w-4 animate-bounce" />
         </a>

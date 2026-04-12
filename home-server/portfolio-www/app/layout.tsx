@@ -3,19 +3,20 @@ import { Inter, JetBrains_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: '--font-inter'
-});
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
-const jetbrainsMono = JetBrains_Mono({ 
-  subsets: ["latin"],
-  variable: '--font-jetbrains-mono'
-});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+})
 
 export const metadata: Metadata = {
   title: 'Developer Portfolio | Software Developer & System Administrator',
-  description: 'Software developer and system administrator portfolio showcasing projects and self-hosted infrastructure.',
+  description:
+    'Software developer and system administrator portfolio showcasing projects and self-hosted infrastructure.',
   generator: 'v0.app',
   icons: {
     icon: [

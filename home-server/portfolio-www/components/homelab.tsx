@@ -1,44 +1,44 @@
-"use client"
+'use client'
 
-import { Server, HardDrive, Cpu, Network, Shield, Cloud } from "lucide-react"
-import { ServerStreams } from "./server-streams"
+import { Cloud, Cpu, HardDrive, Network, Server, Shield } from 'lucide-react'
+import { ServerStreams } from './server-streams'
 
 const specs = [
   {
     icon: Cpu,
-    label: "Processing",
-    value: "Intel Xeon / AMD EPYC",
-    description: "Multi-core server processors",
+    label: 'Processing',
+    value: 'Intel Xeon / AMD EPYC',
+    description: 'Multi-core server processors',
   },
   {
     icon: HardDrive,
-    label: "Storage",
-    value: "ZFS RAID Array",
-    description: "Redundant storage with snapshots",
+    label: 'Storage',
+    value: 'ZFS RAID Array',
+    description: 'Redundant storage with snapshots',
   },
   {
     icon: Network,
-    label: "Network",
-    value: "10GbE Internal",
-    description: "High-speed interconnects",
+    label: 'Network',
+    value: '10GbE Internal',
+    description: 'High-speed interconnects',
   },
   {
     icon: Shield,
-    label: "Security",
-    value: "OPNsense Firewall",
-    description: "VLANs, IDS/IPS, VPN",
+    label: 'Security',
+    value: 'OPNsense Firewall',
+    description: 'VLANs, IDS/IPS, VPN',
   },
   {
     icon: Cloud,
-    label: "Virtualization",
-    value: "Proxmox VE",
-    description: "VMs and containers",
+    label: 'Virtualization',
+    value: 'Proxmox VE',
+    description: 'VMs and containers',
   },
   {
     icon: Server,
-    label: "Services",
-    value: "Self-Hosted",
-    description: "This site, media, backup",
+    label: 'Services',
+    value: 'Self-Hosted',
+    description: 'This site, media, backup',
   },
 ]
 
@@ -52,8 +52,9 @@ export function Homelab() {
         </div>
         <h2 className="text-3xl font-bold text-foreground mb-4">The Homelab</h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed">
-          My passion project and learning playground. A full server rack running enterprise-grade 
-          hardware, hosting everything from this website to media servers and development environments.
+          My passion project and learning playground. A full server rack running enterprise-grade
+          hardware, hosting everything from this website to media servers and development
+          environments.
         </p>
       </div>
 
@@ -89,10 +90,10 @@ export function Homelab() {
       <div className="mt-12 p-6 bg-secondary/30 rounded-xl border border-border">
         <h3 className="text-lg font-semibold text-foreground mb-3">Why Self-Host?</h3>
         <p className="text-muted-foreground leading-relaxed">
-          Running my own infrastructure gives me complete control over my data and services. 
-          It&apos;s also an incredible learning experience - from networking and security to 
-          system administration and automation. Every problem solved adds to my skillset, 
-          and there&apos;s something satisfying about knowing exactly where your bits live.
+          Running my own infrastructure gives me complete control over my data and services.
+          It&apos;s also an incredible learning experience - from networking and security to system
+          administration and automation. Every problem solved adds to my skillset, and there&apos;s
+          something satisfying about knowing exactly where your bits live.
         </p>
       </div>
     </section>

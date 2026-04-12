@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { Server } from "lucide-react"
+import { Server } from 'lucide-react'
 
 export function Footer() {
   return (

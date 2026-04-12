@@ -1,27 +1,27 @@
-"use client"
+'use client'
 
-import { Code2, Server, Terminal, Wrench } from "lucide-react"
+import { Code2, Server, Terminal, Wrench } from 'lucide-react'
 
 const skills = [
   {
-    category: "Development",
+    category: 'Development',
     icon: Code2,
-    items: ["TypeScript", "React", "Next.js", "Python", "Go", "Node.js"],
+    items: ['TypeScript', 'React', 'Next.js', 'Python', 'Go', 'Node.js'],
   },
   {
-    category: "Infrastructure",
+    category: 'Infrastructure',
     icon: Server,
-    items: ["Linux", "Docker", "Kubernetes", "Proxmox", "Ansible", "Terraform"],
+    items: ['Linux', 'Docker', 'Kubernetes', 'Proxmox', 'Ansible', 'Terraform'],
   },
   {
-    category: "DevOps",
+    category: 'DevOps',
     icon: Terminal,
-    items: ["CI/CD", "GitHub Actions", "Nginx", "Monitoring", "Logging", "Backup"],
+    items: ['CI/CD', 'GitHub Actions', 'Nginx', 'Monitoring', 'Logging', 'Backup'],
   },
   {
-    category: "Networking",
+    category: 'Networking',
     icon: Wrench,
-    items: ["TCP/IP", "DNS", "VPN", "Firewalls", "VLANs", "Load Balancing"],
+    items: ['TCP/IP', 'DNS', 'VPN', 'Firewalls', 'VLANs', 'Load Balancing'],
   },
 ]
 
@@ -34,19 +34,19 @@ export function About() {
           <h2 className="text-3xl font-bold text-foreground mb-6">About Me</h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              I&apos;m a software developer and system administrator with a passion for 
-              building things that work reliably. Whether it&apos;s a web application 
-              or a server cluster, I care deeply about clean code and solid infrastructure.
+              I&apos;m a software developer and system administrator with a passion for building
+              things that work reliably. Whether it&apos;s a web application or a server cluster, I
+              care deeply about clean code and solid infrastructure.
             </p>
             <p>
-              My journey started with curiosity about how things work under the hood. 
-              That curiosity led me from writing my first scripts to running my own 
-              homelab with multiple servers, learning something new with every project.
+              My journey started with curiosity about how things work under the hood. That curiosity
+              led me from writing my first scripts to running my own homelab with multiple servers,
+              learning something new with every project.
             </p>
             <p>
-              When I&apos;m not coding or tinkering with servers, you&apos;ll find me exploring 
-              new technologies, contributing to open source, or documenting what I&apos;ve learned 
-              to help others on similar paths.
+              When I&apos;m not coding or tinkering with servers, you&apos;ll find me exploring new
+              technologies, contributing to open source, or documenting what I&apos;ve learned to
+              help others on similar paths.
             </p>
           </div>
         </div>
