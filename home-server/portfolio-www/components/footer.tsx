@@ -2,7 +2,7 @@ import { Server } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="py-8 border-t border-border">
+    <footer className="py-8 border-t border-border relative z-10 max-w-6xl mx-auto px-6">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
         <p>© {new Date().getFullYear()} · Built with Next.js</p>
         <div className="flex items-center gap-2">

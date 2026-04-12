@@ -19,9 +19,7 @@ export default function Home() {
         <Homelab />
         <Contact />
       </main>
-      <footer className="relative z-10 max-w-6xl mx-auto px-6">
         <Footer />
-      </footer>
     </>
   )
 }
