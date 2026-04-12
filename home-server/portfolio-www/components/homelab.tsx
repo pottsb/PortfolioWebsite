@@ -1,5 +1,3 @@
-'use client'
-
 import { Cloud, Cpu, HardDrive, Network, Server, Shield } from 'lucide-react'
 import { ServerStreams } from './server-streams'
 

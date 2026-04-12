@@ -1,5 +1,3 @@
-'use client'
-
 import { Code2, Server, Terminal, Wrench } from 'lucide-react'
 
 const skills = [

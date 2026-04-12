@@ -1,5 +1,3 @@
-'use client'
-
 import { ArrowDown, Code2, Mail, Server } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
