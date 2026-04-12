@@ -60,7 +60,7 @@ jobs:
       - name: Build and push thumbgen image
         uses: docker/build-push-action@v6
         with:
-          context: ./vps//cctv-relaythumbgen
+          context: ./vps/cctv-relay/thumbgen
           file: ./vps/cctv-relay/thumbgen/Dockerfile
           push: true
           tags: ${{ steps.meta_thumbgen.outputs.tags }}
