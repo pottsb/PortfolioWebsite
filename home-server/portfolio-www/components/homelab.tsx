@@ -44,7 +44,7 @@ const specs = [
 
 export function Homelab() {
   return (
-    <section id="homelab" className="py-24">
+    <section id="homelab" className="pt-8 pb-24 md:py-24">
       <div className="mb-12">
         <h2 className="text-3xl font-bold text-foreground mb-4">The Homelab</h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed">

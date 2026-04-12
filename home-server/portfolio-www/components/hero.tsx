@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 
 export function Hero() {
   return (
-    <section className="min-h-[90vh] flex flex-col justify-center relative">
+    <section className="relative flex min-h-[90vh] flex-col justify-center max-md:overflow-x-hidden">
       {/* Decorative gradient orb */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-50 pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
