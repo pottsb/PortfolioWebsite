@@ -119,11 +119,11 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     restart: unless-stopped
+    env_file:
+      - .env
     expose:
       - "3000"
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=pickles7667sweet
       - GF_SERVER_ROOT_URL=http://grafana
     volumes:
       - grafana-data:/var/lib/grafana
