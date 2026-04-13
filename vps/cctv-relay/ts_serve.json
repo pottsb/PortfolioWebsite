@@ -1,11 +1,19 @@
 {
-    "Web": {
-      "80": {
-        "Handlers": {
-          "/": {
-            "Proxy": "http://grafana:3000"
-          }
+  "TCP": {
+    "80": {
+      "HTTPS": false
+    }
+  },
+  "Web": {
+    "mediamtx-monitor.tail5c2a0.ts.net:80": {
+      "Handlers": {
+        "/": {
+          "Proxy": "http://grafana:3000"
         }
       }
     }
+  },
+  "AllowFunnel": {
+    "mediamtx-monitor.tail5c2a0.ts.net:80": false
   }
+}
