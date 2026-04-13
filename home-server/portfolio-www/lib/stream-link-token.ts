@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { env } from "@/lib/env.ts";
 
 export function getStreamLinkTokenAndExpires(): { token: string; expires: number } {
-  const clientId = env.STREAM_BFRD_CLIENT_ID;
+  const clientId = env.STREAM_SECRET;
   const linkExpirySeconds = env.linkExpirySeconds;
 
   const expires = Math.floor(Date.now() / 1000) + linkExpirySeconds;

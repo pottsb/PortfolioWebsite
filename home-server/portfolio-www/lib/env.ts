@@ -7,10 +7,10 @@ const serverEnvSchema = z
       .trim()
       .min(1, "STREAM_DOMAIN is required")
       .url("STREAM_DOMAIN must be a valid URL"),
-    STREAM_BFRD_CLIENT_ID: z
+    STREAM_SECRET: z
       .string()
       .trim()
-      .min(1, "STREAM_BFRD_CLIENT_ID is required"),
+      .min(1, "STREAM_SECRET is required"),
     LINK_EXPIRARY: z.preprocess(
       (v) => {
         if (v === undefined || v === null) return undefined;
@@ -22,7 +22,7 @@ const serverEnvSchema = z
   })
   .transform((o) => ({
     STREAM_DOMAIN: o.STREAM_DOMAIN,
-    STREAM_BFRD_CLIENT_ID: o.STREAM_BFRD_CLIENT_ID,
+    STREAM_SECRET: o.STREAM_SECRET,
     linkExpirySeconds: o.LINK_EXPIRARY ?? 300,
   }));
 
@@ -30,6 +30,6 @@ export type Env = z.infer<typeof serverEnvSchema>;
 
 export const env: Env = serverEnvSchema.parse({
   STREAM_DOMAIN: process.env.STREAM_DOMAIN,
-  STREAM_BFRD_CLIENT_ID: process.env.STREAM_BFRD_CLIENT_ID,
+  STREAM_SECRET: process.env.STREAM_SECRET,
   LINK_EXPIRARY: process.env.LINK_EXPIRARY,
 });
