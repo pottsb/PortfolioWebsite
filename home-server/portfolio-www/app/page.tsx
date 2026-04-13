@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <InteractiveOrbs />
       <Navigation />
-      <main className="relative z-10 mx-auto min-w-0 max-w-6xl overflow-x-clip px-6 pt-20">
+      <main className="relative z-10 mx-auto min-w-0 max-w-6xl px-6 pt-20">
         <Hero />
         <About />
         <Projects />
