@@ -16,7 +16,7 @@ metricsAddress: 0.0.0.0:9998
 metrics: yes
 
 apiAddress: 0.0.0.0:9997
-api: yes
+api: no
 
 paths:
   camera1:
