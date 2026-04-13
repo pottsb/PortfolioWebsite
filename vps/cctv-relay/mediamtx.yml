@@ -3,6 +3,12 @@ logLevel: info
 hlsAddress: 0.0.0.0:8888
 hls: yes
 
+metricsAddress: 0.0.0.0:9998
+metrics: yes
+
+apiAddress: 0.0.0.0:9997
+api: yes
+
 paths:
   camera1:
     source: rtsp://10.0.0.2:8554/camera1

@@ -18,6 +18,8 @@ services:
       - "51820:51820/udp"
     expose:
       - "8888"
+      - "9997"
+      - "9998"
     networks:
       - app
     restart: unless-stopped
@@ -99,7 +101,59 @@ services:
       - nginx
     restart: unless-stopped
 
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - app
+    depends_on:
+      - mediamtx-vps
+      - wireguard
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=pickles7667sweet
+      - GF_SERVER_ROOT_URL=http://grafana
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+      - app
+    depends_on:
+      - prometheus
+
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale
+    restart: unless-stopped
+    hostname: mediamtx-monitor
+    env_file:
+      - .env
+    environment:
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_USERSPACE=true
+    volumes:
+      - tailscale-data:/var/lib/tailscale
+    networks:
+      - app
+    depends_on:
+      - grafana
+    command: >
+      sh -c "
+      tailscaled &
+      sleep 5 &&
+      tailscale up --authkey=${TS_AUTHKEY} --hostname=mediamtx-monitor &&
+      tailscale serve http / http://grafana:3000
+
 volumes:
   caddy_data:
   caddy_config:
   thumbs_data:
+  grafana-data:
+  tailscale-data:
