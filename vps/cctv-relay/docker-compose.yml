@@ -106,7 +106,7 @@ services:
     container_name: prometheus
     restart: unless-stopped
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
     networks:
       - app
     depends_on:
@@ -128,7 +128,7 @@ services:
     depends_on:
       - prometheus
 
-  tailscale:
+tailscale:
     image: tailscale/tailscale:latest
     container_name: tailscale
     restart: unless-stopped
@@ -138,18 +138,16 @@ services:
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_USERSPACE=true
+      - TS_AUTHKEY=${TS_AUTHKEY}
+      - TS_EXTRA_ARGS=--hostname=mediamtx-monitor
+      - TS_SERVE_CONFIG=/config/serve.json
     volumes:
       - tailscale-data:/var/lib/tailscale
+      - ./ts_serve.json:/config/serve.json:ro
     networks:
       - app
     depends_on:
       - grafana
-    command: >
-      sh -c "
-      tailscaled &
-      sleep 5 &&
-      tailscale up --authkey=${TS_AUTHKEY} --hostname=mediamtx-monitor &&
-      tailscale serve http / http://grafana:3000
 
 volumes:
   caddy_data:
