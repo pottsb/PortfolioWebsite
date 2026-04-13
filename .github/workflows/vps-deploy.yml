@@ -4,16 +4,21 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'vps/cctv-relay/**' # Only triggers if files in this folder change
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Trigger deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
           username: deploy
           key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
-          script: "echo 'trigger deploy'"
+          script: "echo 'trigger deploy for cctv-relay'"
