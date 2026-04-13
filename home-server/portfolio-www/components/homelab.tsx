@@ -46,7 +46,7 @@ export function Homelab() {
       <div className="mb-12">
         <h2 className="text-3xl font-bold text-foreground mb-4">The Homelab</h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed">
-          My passion project and learning playground. A full server rack running enterprise-grade
+          My passion project and learning playground. A server rack running enterprise-grade
           hardware, hosting everything from this website to media servers and development
           environments.
         </p>
