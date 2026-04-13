@@ -1,5 +1,14 @@
 logLevel: info
 
+authInternalUsers:
+  - user: any
+    pass:
+    permissions:
+      - action: publish
+      - action: read
+      - action: api
+      - action: metrics
+
 hlsAddress: 0.0.0.0:8888
 hls: yes
 
