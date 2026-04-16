@@ -34,7 +34,7 @@ export function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <span className="font-mono text-lg font-semibold text-foreground">
-            <span className="text-primary">~/</span>portfolio
+            <span className="text-primary">~/</span>Bedford IT
           </span>
 
           {/* Desktop Navigation */}

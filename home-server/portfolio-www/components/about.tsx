@@ -1,25 +1,50 @@
-import { Code2, Server, Terminal, Wrench } from 'lucide-react'
+import { Code2, DatabaseIcon, Server, Terminal } from 'lucide-react'
 
 const skills = [
   {
     category: 'Development',
     icon: Code2,
-    items: ['TypeScript', 'React', 'Next.js', 'Python', 'Go', 'Node.js'],
+    items: [
+      'JavaScript / TypeScript',
+      'PHP',
+      'Python',
+      'C / C++',
+      'Java',
+      'LUA',
+      'HTML, CSS',
+      'Tailwind',
+      'Bash',
+      'PowerShell',
+    ],
   },
   {
     category: 'Infrastructure',
     icon: Server,
-    items: ['Linux', 'Docker', 'Kubernetes', 'Proxmox', 'Ansible', 'Terraform'],
+    items: [
+      'Linux & Windows Server',
+      'Docker',
+      'Proxmox',
+      'ESXI',
+      'Networking',
+      'firewalls',
+      'VPNs',
+    ],
   },
   {
     category: 'DevOps',
     icon: Terminal,
-    items: ['CI/CD', 'GitHub Actions', 'Nginx', 'Monitoring', 'Logging', 'Backup'],
+    items: [
+      'CI/CD pipelines',
+      'GitHub Actions',
+      'Automation & scripting',
+      'Monitoring',
+      'Logging & alerting',
+    ],
   },
   {
-    category: 'Networking',
-    icon: Wrench,
-    items: ['TCP/IP', 'DNS', 'VPN', 'Firewalls', 'VLANs', 'Load Balancing'],
+    category: 'Data & Messaging',
+    icon: DatabaseIcon,
+    items: ['Prisma', 'MySQL', 'PostgreSQL', 'Redis', 'InfluxDB', 'MQTT'],
   },
 ]
 
@@ -32,19 +57,25 @@ export function About() {
           <h2 className="text-3xl font-bold text-foreground mb-6">About Me</h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              I&apos;m a software developer and system administrator with a passion for building
-              things that work reliably. Whether it&apos;s a web application or a server cluster, I
-              care deeply about clean code and solid infrastructure.
+              I started out fixing computers, setting up networks, and working with small
+              businesses, both independently and in an MSP environment. That gave me experience
+              across a wide range of systems early on, from troubleshooting individual machines to
+              managing larger infrastructure. Since then, I’ve moved into backend development and
+              Linux systems, building automation and tools to make systems easier to run and
+              maintain.
             </p>
+
             <p>
-              My journey started with curiosity about how things work under the hood. That curiosity
-              led me from writing my first scripts to running my own homelab with multiple servers,
-              learning something new with every project.
+              I got started by running my own servers and learning how systems fit together from the
+              ground up. That hands-on experience shaped how I work today. I still run a homelab
+              where I test ideas, try new tools, and host services for friends and family. It’s
+              where I learn the most and keep improving what I do day to day.
             </p>
+
             <p>
-              When I&apos;m not coding or tinkering with servers, you&apos;ll find me exploring new
-              technologies, contributing to open source, or documenting what I&apos;ve learned to
-              help others on similar paths.
+              I’m always looking to keep learning, take on new challenges, and build things I’m
+              proud of. Whether that’s improving existing systems or starting something new, I enjoy
+              the process of figuring things out and making them work properly.
             </p>
           </div>
         </div>

@@ -4,9 +4,9 @@ import { ServerStreams } from './server-streams'
 const specs = [
   {
     icon: Cpu,
-    label: 'Processing',
-    value: 'Intel Xeon / AMD EPYC',
-    description: 'Multi-core server processors',
+    label: 'Hardware',
+    value: 'HPE Servers',
+    description: 'Enterprise-grade hardware',
   },
   {
     icon: HardDrive,
@@ -23,20 +23,32 @@ const specs = [
   {
     icon: Shield,
     label: 'Security',
-    value: 'OPNsense Firewall',
-    description: 'VLANs, IDS/IPS, VPN',
+    value: 'Next Gen Firewall',
+    description: 'VLANs, IDS/IPS, PiHole, Wazuh, Crowdsec',
   },
   {
     icon: Cloud,
     label: 'Virtualization',
-    value: 'Proxmox VE',
+    value: 'Proxmox VE & Docker',
     description: 'VMs and containers',
   },
   {
     icon: Server,
-    label: 'Services',
-    value: 'Self-Hosted',
-    description: 'This site, media, backup',
+    label: 'Backups',
+    value: '321 Backup Strategy',
+    description: 'Proxmox Backup Server, Synology Backup Server',
+  },
+  {
+    icon: Server,
+    label: 'Power',
+    value: 'UPS and Power Logging',
+    description: 'UPS with ATS Bypass and monitoring dashboard',
+  },
+  {
+    icon: Server,
+    label: 'Monitoring',
+    value: 'Information & Alerting',
+    description: 'Greylog, Zabbix, Scrutiny, Uptime Kuma, Grafana',
   },
 ]
 
@@ -46,9 +58,13 @@ export function Homelab() {
       <div className="mb-12">
         <h2 className="text-3xl font-bold text-foreground mb-4">The Homelab</h2>
         <p className="text-muted-foreground max-w-2xl leading-relaxed">
-          My passion project and learning playground. A server rack running enterprise-grade
-          hardware, hosting everything from this website to media servers and development
-          environments.
+          My homelab started as a hobby and ties in closely with my career. I tinker and learn
+          because I enjoy computers! Over time, it’s grown into a full environment for testing,
+          development, and hosting real services. I focus on building performant, reliable systems
+          with minimal resources, similar to the constraints you see in real businesses. It gave me
+          a safe place to experiment with Linux, Windows Server, networking, and automation early
+          on, and still does today. I use it to test ideas before production, run services for
+          friends and family, and gain hands-on experience solving real infrastructure problems.
         </p>
       </div>
 
@@ -84,10 +100,13 @@ export function Homelab() {
       <div className="mt-12 p-6 bg-secondary/30 rounded-xl border border-border">
         <h3 className="text-lg font-semibold text-foreground mb-3">Why Self-Host?</h3>
         <p className="text-muted-foreground leading-relaxed">
-          Running my own infrastructure gives me complete control over my data and services.
-          It&apos;s also an incredible learning experience - from networking and security to system
-          administration and automation. Every problem solved adds to my skillset, and there&apos;s
-          something satisfying about knowing exactly where your bits live.
+          Self-hosting gives me full control over how things are built and run. If something breaks,
+          I'm the one at fault, I'm the one who needs to fix it, and I learn from it. It’s the best
+          way I’ve found to learn. You run into real problems: networking issues, performance
+          bottlenecks, security concerns. Solving real problems builds skills that actually transfer
+          to production environments. Plus, there’s something satisfying about knowing exactly where
+          your data lives and how every part of the system fits together. The blinky lights are a
+          nice bonus too!
         </p>
       </div>
     </section>

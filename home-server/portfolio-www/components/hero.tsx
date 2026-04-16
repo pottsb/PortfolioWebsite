@@ -13,7 +13,7 @@ export function Hero() {
         {/* Large name */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up animation-delay-100">
           <span className="text-balance text-foreground">Hi, I&apos;m </span>
-          <span className="text-primary">Your Name</span>
+          <span className="text-primary">Peter Bedford</span>
         </h1>
 
         {/* Roles - smaller */}
@@ -27,8 +27,8 @@ export function Hero() {
 
         {/* Description */}
         <p className="text-lg text-muted-foreground max-w-2xl text-balance leading-relaxed mb-8 opacity-0 animate-fade-in-up animation-delay-300">
-          I build robust applications and maintain the infrastructure that powers them. From code to
-          server rack, I enjoy every layer of the stack.
+          I build reliable software and the infrastructure behind it. From code to server rack, I
+          enjoy every layer of the stack.
         </p>
 
         {/* CTA Links */}
