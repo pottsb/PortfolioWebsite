@@ -222,7 +222,7 @@ export function ServerStreams() {
               />
 
               {/* Overlay gradient */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stream-overlay/80 via-transparent to-transparent" />
 
               {/* Info overlay */}
               <div className="absolute bottom-0 left-0 right-0 translate-y-2 p-4 opacity-70 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
