@@ -60,7 +60,7 @@ export function Projects() {
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+              <div className="absolute inset-0 bg-transparent dark:bg-gradient-to-t dark:from-card-image-overlay/70 dark:to-transparent" />
             </div>
 
             {/* Content */}
