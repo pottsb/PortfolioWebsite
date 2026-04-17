@@ -1,0 +1,10 @@
+services:
+  www:
+    image: pottsb/portfolio-www:latest
+    pull_policy: always
+    container_name: portfolio-www
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
