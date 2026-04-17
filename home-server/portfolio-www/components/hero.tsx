@@ -21,8 +21,10 @@ export function Hero() {
           <Code2 className="h-6 w-6 text-primary" />
           Software Developer
           <span className="text-border">•</span>
-          <Server className="h-6 w-6 text-primary" />
-          System Administrator
+          <span className="inline-flex items-center gap-2">
+            <Server className="h-6 w-6 shrink-0 text-primary" />
+            System Administrator
+          </span>
         </h2>
 
         {/* Description */}
