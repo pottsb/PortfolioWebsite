@@ -14,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Peter Bedford| Software Developer & System Administrator',
+  title: 'Peter Bedford | Software Developer & System Administrator',
   description:
     'Software developer, system administrator, and self-hosting enthusiast. Building robust applications and maintaining the infrastructure that powers them. From code to server rack, I enjoy every layer of the stack.',
 }
