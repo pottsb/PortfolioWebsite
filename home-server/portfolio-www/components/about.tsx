@@ -57,7 +57,7 @@ export function About() {
           <h2 className="text-3xl font-bold text-foreground mb-6">About Me</h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              I started out fixing computers, setting up networks, and working with small
+              I started out fixing computers, maintaining networks, and working with small
               businesses, both independently and in an MSP environment. That gave me experience
               across a wide range of systems early on, from troubleshooting individual machines to
               managing larger infrastructure. Since then, I’ve moved into backend development and
@@ -73,9 +73,11 @@ export function About() {
             </p>
 
             <p>
-              I’m always looking to keep learning, take on new challenges, and build things I’m
-              proud of. Whether that’s improving existing systems or starting something new, I enjoy
-              the process of figuring things out and making them work properly.
+              At the moment, I split my time between system administration consulting work and
+              building projects with LSP Software, a small company I run with a few friends. We work
+              on ideas and projects in our spare time, which gives me the chance to keep building
+              and experimenting outside of day-to-day work. I’m currently looking for a full-time
+              role where I can continue to learn, grow, and take the next step in my career.
             </p>
           </div>
         </div>
