@@ -1,0 +1,48 @@
+name: Build and Push portfolio www image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "home-server/portfolio-www/**"
+      - ".github/workflows/build-portfolio-www-image.yml"
+  workflow_dispatch:
+
+jobs:
+  build-and-push-portfolio-www:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Extract Docker metadata (portfolio www)
+        id: meta_portfolio_www
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-www
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=short
+
+      - name: Build and push portfolio www image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./home-server/portfolio-www
+          file: ./home-server/portfolio-www/Dockerfile
+          push: true
+          tags: ${{ steps.meta_portfolio_www.outputs.tags }}
+          labels: ${{ steps.meta_portfolio_www.outputs.labels }}
