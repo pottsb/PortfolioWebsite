@@ -2,7 +2,16 @@ import { ExternalLink, Github } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 
-const projects = [
+type Project = {
+  title: string
+  description: string
+  tags: string[]
+  image: string
+  github: string
+  live?: string
+}
+
+const projects: Project[] = [
   {
     title: 'Portfolio Website',
     description:
