@@ -1,16 +1,16 @@
-name: Build and Push API image
+name: Build and Push thumbgen image
 
 on:
   push:
     branches:
       - main
     paths:
-      - "vps/cctv-relay/api/**"
-      - ".github/workflows/build-api-image.yml"
+      - "vps/cctv-relay/thumbgen/**"
+      - ".github/workflows/build-thumbgen-image.yml"
   workflow_dispatch:
 
 jobs:
-  build-and-push-api:
+  build-and-push-thumbgen:
     runs-on: ubuntu-latest
 
     permissions:
@@ -29,21 +29,20 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Extract Docker metadata (API)
-        id: meta_api
+      - name: Extract Docker metadata (thumbgen)
+        id: meta_thumbgen
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-stream-api
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/portfolio-stream-thumbgen
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=sha,format=short
 
-      - name: Build and push API image
+      - name: Build and push thumbgen image
         uses: docker/build-push-action@v6
         with:
-          context: ./vps/cctv-relay/api
-          file: ./vps/cctv-relay/api/Dockerfile
+          context: ./vps/cctv-relay/thumbgen
+          file: ./vps/cctv-relay/thumbgen/Dockerfile
           push: true
-          tags: ${{ steps.meta_api.outputs.tags }}
-          labels: ${{ steps.meta_api.outputs.labels }}
-
+          tags: ${{ steps.meta_thumbgen.outputs.tags }}
+          labels: ${{ steps.meta_thumbgen.outputs.labels }}
