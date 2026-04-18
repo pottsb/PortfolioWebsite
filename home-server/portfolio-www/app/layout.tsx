@@ -19,7 +19,7 @@ const title = 'Peter Bedford - Software Developer & System Administrator'
 const description =
   'Software developer, system administrator, and self-hosting enthusiast. Building robust applications and maintaining the infrastructure that powers them. From code to server rack, I enjoy every layer of the stack.'
 const socialDescription =
-  "Peter Bedford's portfolio — software development, systems administration, and self-hosted infrastructure."
+  "Software developer, system administrator, and self-hosting enthusiast. Building robust applications and maintaining the infrastructure that powers them. From code to server rack, I enjoy every layer of the stack."
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
