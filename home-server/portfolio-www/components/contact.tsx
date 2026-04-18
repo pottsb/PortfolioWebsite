@@ -5,12 +5,12 @@ import { Button } from '@/components/ui/button'
 const socialLinks = [
   {
     name: 'GitHub',
-    href: 'https://github.com',
+    href: 'https://github.com/pottsb',
     icon: Github,
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com',
+    href: 'https://www.linkedin.com/in/peter-b-derbyshire',
     icon: Linkedin,
   },
   {
