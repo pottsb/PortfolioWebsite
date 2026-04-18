@@ -62,7 +62,7 @@ export function Homelab() {
           because I enjoy computers! Over time, it’s grown into a full environment for testing,
           development, and hosting real services. I focus on building performant, reliable systems
           with minimal resources, similar to the constraints you see in real businesses. It gave me
-          a safe place to experiment with Linux, Windows Server, networking, and automation early
+          a place to experiment with Linux, Windows Server, networking, and automation early
           on, and still does today. I use it to test ideas before production, run services for
           friends and family, and gain hands-on experience solving real infrastructure problems.
         </p>
