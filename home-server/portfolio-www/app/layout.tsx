@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
+import { ThemeIconSync } from '@/components/theme-icon-sync'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
@@ -47,6 +48,10 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false,
   },
+  icons: {
+    icon: [{ url: '/icons/dark/favicon.ico', type: 'image/x-icon' }],
+    apple: [{ url: '/icons/dark/apple-touch-icon.png', sizes: '180x180' }],
+  },
   openGraph: {
     type: 'website',
     url: siteUrl,
@@ -88,6 +93,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange={false}
         >
+          <ThemeIconSync />
           {children}
         </ThemeProvider>
       </body>
