@@ -50,7 +50,7 @@ const skills = [
 
 export function About() {
   return (
-    <section id="about" className="border-t border-border pt-24 pb-8 md:py-16">
+    <section id="about" className="border-t border-border pt-24 pb-8 md:pt-12">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
         {/* Bio */}
         <div>

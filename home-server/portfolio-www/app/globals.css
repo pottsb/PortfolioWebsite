@@ -85,6 +85,8 @@
 /* Smooth theme transition; clip horizontal overflow from glows, shadows, and transforms. */
 html {
   overflow-x: clip;
+  /* Match main pt-20: anchor scroll (#about, etc.) stops below the fixed header */
+  scroll-padding-top: 3rem;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
