@@ -15,8 +15,8 @@ const projects: Project[] = [
   {
     title: 'Portfolio Website',
     description:
-      'A Next.js website to showcase my projects and skills. Deployed with Docker. Features a live stream of the servers that host it via VPS relay and Nginx secure links.',
-    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Docker', 'Nginx'],
+      'A Next.js website to showcase my projects and skills. Deployed with Docker. Features a live stream of the servers that host it via VPS relay and Nginx secure links. Grafana livestream dashboard.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Docker', 'Nginx', 'Grafana'],
     image: '/projects/portfoliowebsite.webp',
     github: 'https://github.com/pottsb/PortfolioWebsite',
   },
