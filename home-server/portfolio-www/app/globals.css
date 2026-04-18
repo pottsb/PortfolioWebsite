@@ -157,6 +157,38 @@ html {
   animation: ambient-glow 4s ease-in-out infinite;
 }
 
+/* Contact: social buttons pulse to hover (primary) after in-page nav */
+.animate-contact-social-pulse {
+  animation: contact-social-pulse 1.3s cubic-bezier(0.33, 1, 0.68, 1) both;
+}
+
+@keyframes contact-social-pulse {
+  0% {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    transform: translateY(10px);
+    opacity: 0.88;
+  }
+  38% {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  58% {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* --- Interactive orbs --- */
 html:not(.dark) .interactive-orbs .interactive-orb-sphere {
   background: radial-gradient(

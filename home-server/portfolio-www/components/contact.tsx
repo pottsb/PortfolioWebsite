@@ -1,24 +1,4 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
-
-import { Button } from '@/components/ui/button'
-
-const socialLinks = [
-  {
-    name: 'GitHub',
-    href: 'https://github.com/pottsb',
-    icon: Github,
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/peter-b-derbyshire',
-    icon: Linkedin,
-  },
-  {
-    name: 'Email',
-    href: 'mailto:hello@example.com',
-    icon: Mail,
-  },
-]
+import { ContactSocialLinks } from '@/components/contact-social-links'
 
 export function Contact() {
   return (
@@ -30,17 +10,7 @@ export function Contact() {
           and discuss ideas.
         </p>
 
-        {/* Social Links */}
-        <div className="flex flex-wrap gap-4">
-          {socialLinks.map((link) => (
-            <Button key={link.name} variant="social" asChild>
-              <a href={link.href} target="_blank" rel="noopener noreferrer">
-                <link.icon className="h-4 w-4" />
-                <span className="text-sm font-medium">{link.name}</span>
-              </a>
-            </Button>
-          ))}
-        </div>
+        <ContactSocialLinks />
       </div>
     </section>
   )
