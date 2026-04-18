@@ -1,13 +1,15 @@
 'use client'
 
 import { Github, Linkedin, Mail } from 'lucide-react'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 
 const CONTACT_HASH = '#contact'
 const PULSE_DURATION_MS = 1300
 const PULSE_STAGGER_MS = 90
+const SCROLL_SETTLE_MS = 140
+const BOTTOM_TOLERANCE_PX = 2
 
 const socialLinks = [
   {
@@ -35,6 +37,7 @@ function linkGoesToContact(href: string | null): boolean {
 
 export function ContactSocialLinks() {
   const [pulse, setPulse] = useState(false)
+  const scrollWaitRafIdRef = useRef<number | null>(null)
 
   const triggerPulse = useCallback(() => {
     setPulse(false)
@@ -42,6 +45,50 @@ export function ContactSocialLinks() {
       requestAnimationFrame(() => setPulse(true))
     })
   }, [])
+
+  const cancelPendingScrollWait = useCallback(() => {
+    if (scrollWaitRafIdRef.current === null) return
+    cancelAnimationFrame(scrollWaitRafIdRef.current)
+    scrollWaitRafIdRef.current = null
+  }, [])
+
+  const isAtPageBottom = useCallback((): boolean => {
+    const doc = document.documentElement
+    const bottom = window.scrollY + window.innerHeight
+    return bottom >= doc.scrollHeight - BOTTOM_TOLERANCE_PX
+  }, [])
+
+  const triggerPulseAfterScrollSettlesAtBottom = useCallback(() => {
+    cancelPendingScrollWait()
+
+    let lastScrollY = window.scrollY
+    let lastHeight = document.documentElement.scrollHeight
+    let settledSince = performance.now()
+
+    const check = (now: number) => {
+      const currentY = window.scrollY
+      const currentHeight = document.documentElement.scrollHeight
+      const moved = Math.abs(currentY - lastScrollY) > 0.5 || currentHeight !== lastHeight
+
+      if (moved) {
+        lastScrollY = currentY
+        lastHeight = currentHeight
+        settledSince = now
+      }
+
+      if (now - settledSince >= SCROLL_SETTLE_MS) {
+        scrollWaitRafIdRef.current = null
+        if (window.location.hash === CONTACT_HASH && isAtPageBottom()) {
+          triggerPulse()
+        }
+        return
+      }
+
+      scrollWaitRafIdRef.current = requestAnimationFrame(check)
+    }
+
+    scrollWaitRafIdRef.current = requestAnimationFrame(check)
+  }, [cancelPendingScrollWait, isAtPageBottom, triggerPulse])
 
   useEffect(() => {
     if (!pulse) return
@@ -51,23 +98,18 @@ export function ContactSocialLinks() {
   }, [pulse])
 
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout> | undefined
-
     const schedulePulseIfContactHash = () => {
       if (window.location.hash !== CONTACT_HASH) return
-      if (timeoutId !== undefined) clearTimeout(timeoutId)
-      timeoutId = setTimeout(() => {
-        triggerPulse()
-      }, 120)
+      triggerPulseAfterScrollSettlesAtBottom()
     }
 
     schedulePulseIfContactHash()
     window.addEventListener('hashchange', schedulePulseIfContactHash)
     return () => {
       window.removeEventListener('hashchange', schedulePulseIfContactHash)
-      if (timeoutId !== undefined) clearTimeout(timeoutId)
+      cancelPendingScrollWait()
     }
-  }, [triggerPulse])
+  }, [cancelPendingScrollWait, triggerPulseAfterScrollSettlesAtBottom])
 
   useEffect(() => {
     const onClickCapture = (e: MouseEvent) => {
@@ -79,11 +121,11 @@ export function ContactSocialLinks() {
       if (window.location.hash !== CONTACT_HASH) return
       e.preventDefault()
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      triggerPulse()
+      triggerPulseAfterScrollSettlesAtBottom()
     }
     document.addEventListener('click', onClickCapture, true)
     return () => document.removeEventListener('click', onClickCapture, true)
-  }, [triggerPulse])
+  }, [triggerPulseAfterScrollSettlesAtBottom])
 
   return (
     <div className="flex flex-wrap gap-4">
