@@ -2,7 +2,10 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import { ThemeIconSync } from '@/components/theme-icon-sync'
 import { ThemeProvider } from '@/components/theme-provider'
+import { env } from '@/lib/env'
 import './globals.css'
+
+const streamOrigin = new URL(env.STREAM_DOMAIN).origin
 
 const inter = Inter({
   subsets: ['latin'],
@@ -86,6 +89,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href={streamOrigin} crossOrigin="anonymous" />
+      </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
