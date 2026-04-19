@@ -23,7 +23,7 @@ const projects: Project[] = [
   {
     title: 'Open Beacon',
     description:
-      'A React Native family location app built with a privacy first approach. All data is encrypted at rest and in transit. Still in development but we plan to release it on Android and iOS allowing for both self-hosted and cloud-hosted options.',
+      'An LSP Software project. A React Native family location app built with a privacy first approach. All data is encrypted at rest and in transit. Still in development but we plan to release it on Android and iOS allowing for both self-hosted and cloud-hosted options.',
     tags: ['React Native', 'Expo', 'Prisma', 'PostgreSQL', 'S3'],
     image: '/projects/openbeacon.webp',
     github: 'https://github.com/LSP-Software/OpenBeacon',
@@ -37,7 +37,7 @@ const projects: Project[] = [
   },
   {
     title: 'Monitor Lizard',
-    description: 'A server monitoring tool for windows and linux with a Next.JS frontend and FastAPI backend. Built for quick deployment and simple monitoring of servers. Built for a university group project.',
+    description: 'A server monitoring tool for windows and linux with a Next.JS frontend and FastAPI backend. Built for quick deployment and simple monitoring of servers. Built for a university group project, I was responsible for the backend API, client data collection daemons, and daemon deployment.',
     tags: ['Next.js', 'Python', 'FastAPI', 'PowerShell', 'Bash', 'Cron', 'Systemd'],
     image: '/projects/monitorlizard.webp',
     github: 'https://github.com/UOD-team-project-2023/ML-monorepo/',
