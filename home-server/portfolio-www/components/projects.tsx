@@ -30,14 +30,16 @@ const projects: Project[] = [
   },
   {
     title: 'Network Administration Software',
-    description: 'A Python based minimal dependency network administration software for computers on isolated networks. Supports WOL and shutting down groups of computers quickly and reliably.',
+    description:
+      'A Python based minimal dependency network administration software for computers on isolated networks. Supports WOL and shutting down groups of computers quickly and reliably.',
     tags: ['Python', 'PowerShell', 'Batch', 'Sockets'],
     image: '/projects/networkadministrationsoftware.webp',
     github: 'https://github.com/pottsb/UOD-Network-Administration-Software',
   },
   {
     title: 'Monitor Lizard',
-    description: 'A server monitoring tool for windows and linux with a Next.JS frontend and FastAPI backend. Built for quick deployment and simple monitoring of servers. Built for a university group project, I was responsible for the backend API, client data collection daemons, and daemon deployment.',
+    description:
+      'A server monitoring tool for windows and linux with a Next.JS frontend and FastAPI backend. Built for quick deployment and simple monitoring of servers. Built for a university group project, I was responsible for the backend API, client data collection daemons, and daemon deployment.',
     tags: ['Next.js', 'Python', 'FastAPI', 'PowerShell', 'Bash', 'Cron', 'Systemd'],
     image: '/projects/monitorlizard.webp',
     github: 'https://github.com/UOD-team-project-2023/ML-monorepo/',
