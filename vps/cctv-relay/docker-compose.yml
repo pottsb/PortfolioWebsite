@@ -71,6 +71,7 @@ services:
       - NGINX_ENVSUBST_FILTER=^(STREAM_SECRET|STREAM_DOMAIN|API_AUTH_HEADER_SECRET)$
     volumes:
       - ./nginx.conf:/etc/nginx/templates/nginx.conf.template:ro
+      - ./validate-nginx-env.sh:/docker-entrypoint.d/19-validate-env.sh:ro
       - thumbs_data:/thumbs:ro
     expose:
       - "80"
