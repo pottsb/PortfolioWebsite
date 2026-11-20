@@ -9,6 +9,9 @@ app = FastAPI()
 SECRET = os.getenv("STREAM_SECRET")
 STREAM_DOMAIN = os.getenv("STREAM_DOMAIN")
 
+if not SECRET or not STREAM_DOMAIN:
+    raise RuntimeError("STREAM_SECRET and STREAM_DOMAIN must be configured")
+
 @app.get("/get-stream")
 def get_stream():
     expires = int(time.time()) + 300
